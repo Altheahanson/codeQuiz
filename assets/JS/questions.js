@@ -1,91 +1,95 @@
-//Create List of questions
-let question0 = {
-    Q: 'How do you break within a string?',
-    A1: 'Forwardslash',
-    A2: 'Hashtag',
-    A3: 'Backslash',
-    A4: 'Interrobang',
-    R: 'A3'
-}
 
-let question1 = {
-    Q: 'Which method remove variables from the end of an array?',
-    A1: 'shift()',
-    A2: 'pop()',
-    A3: 'unshift()',
-    A4: 'push()',
-    R: 'A2'
-}
+let questions = [
 
-let question2 = {
-    Q: 'the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.',
-    A1: 'interpolation',
-    A2: 'extrapolation',
-    A3: 'object dominence',
-    A4: 'Hoisting',
-    R: 'A4'
-}
-
-let question3 = {
-    Q: 'What are JavaScript Data Types?',
-    A1: 'Number, String, Boolean, Object, Undefined',
-    A2: 'Function, String, Boolean, Object, Number',
-    A3: 'HTML, CSS, JS, ASP, jQuery',
-    A4: 'innerHTML, textarea, select, form, button',
-    R: 'A1'
-}
-
-let question4 = {
-    Q: 'What does NaN mean?',
-    A1: 'Not a number.',
-    A2: 'Now a Null',
-    A3: 'Number as Numerical',
-    A4: 'Nth of a number ',
-    R: 'A1'
-}
-
-let question5 = {
-    Q: 'Which company developed JavaScript?',
-    A1: 'Java Ltd',
-    A2: 'Microsoft Corporation',
-    A3: 'Apple Corporation',
-    A4: 'Netscape',
-    R: 'A4'
-}
-
-let question6 = {
-    Q: 'a notation resembling a simplified programming language, used in program design.',
-    A1: 'javascript',
-    A2: 'hoisting',
-    A3: 'pseudocode',
-    A4: 'key pair',
-    R: 'A3'
-}
-
-let question7 = {
-    Q: 'What is the strict equality operator?',
-    A1: '+=',
-    A2: '===',
-    A3: '==',
-    A4: '>=',
-    R: 'A2'
-}
-
-let question8 = {
-    Q: 'A keyword that refers to the object from where it was called',
-    A1: 'Function',
-    A2: 'Method',
-    A3: 'Document',
-    A4: 'This',
-    R: 'A4'
-}
-
-let question9 = {
-    Q: 'What is the data type of variables in JavaScript?',
-    A1: 'Function data types',
-    A2: 'Operator data types',
-    A3: 'Object data types',
-    A4: 'Typescript data types',
-    R: 'A3'
-}
-
+    {
+        question: 'How do you break within a string?',
+        answers: [
+            { text: 'Forwardslash', correct: false },
+            { text: 'Hashtag', correct: false },
+            { text: 'Backslash', correct: true },
+            { text: 'Interrobang', correct: false }
+        ]
+    },
+    {
+        question: 'Which method remove variables from the end of an array?',
+        answers: [
+            { text: 'shift()', correct: false },
+            { text: 'pop()', correct: true },
+            { text: 'unshift()', correct: false },
+            { text: 'push()', correct: false }
+        ]
+    },
+    {
+        question: 'the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.',
+        answers: [
+            { text: 'interpolation', correct: false },
+            { text: 'extrapolation', correct: false },
+            { text: 'object dominence', correct: false },
+            { text: 'Hoisting', correct: true }
+        ]
+    },
+    {
+        question: 'What are JavaScript Data Types?',
+        answers: [
+            { text: 'Number, String, Boolean, Object, Undefined', correct: true },
+            { text: 'Function, String, Boolean, Object, Number', correct: false },
+            { text: 'HTML, CSS, JS, ASP, jQuery', correct: false },
+            { text: 'innerHTML, textarea, select, form, button', correct: false }
+        ]
+    },
+    {
+        question: 'What does NaN mean?',
+        answers: [
+            { text: 'Not a number.', correct: true },
+            { text: 'Now a Null', correct: false },
+            { text: 'Number as Numerical', correct: false },
+            { text: 'Nth of a number ', correct: false }
+        ]
+    },
+    {
+        question: 'Which company developed JavaScript?',
+        answers: [
+            { text: 'Java Ltd', correct: false },
+            { text: 'Microsoft Corporation', correct: false },
+            { text: 'Apple Corporation', correct: false },
+            { text: 'Netscape', correct: true }
+        ]
+    },
+    {
+        question: 'a notation resembling a simplified programming language, used in program design.',
+        answers: [
+            { text: 'javascript', correct: false },
+            { text: 'hoisting', correct: false },
+            { text: 'pseudocode', correct: true },
+            { text: 'key pair', correct: false }
+        ]
+    },
+    {
+        question: 'What is the strict equality operator?',
+        answers: [
+            { text: '+=', correct: false },
+            { text: '===', correct: true },
+            { text: '==', correct: false },
+            { text: '>=', correct: false }
+        ]
+    },
+    {
+        question: 'A keyword that refers to the object from where it was called',
+        answers: [
+            { text: 'Function', correct: false },
+            { text: 'Method', correct: false },
+            { text: 'Document', correct: false },
+            { text: 'This', correct: true }
+        ]
+    },
+    {
+        question: 'What is the data type of variables in JavaScript?',
+        answers: [
+            { text: 'Function data types', correct: false },
+            { text: 'Operator data types', correct: false },
+            { text: 'Object data types', correct: true },
+            { text: 'Typescript data types', correct: false }
+        ]
+    },
+  ]
+  

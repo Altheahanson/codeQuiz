@@ -6,6 +6,7 @@
     --color-scoreboard: hsl(258, 41%, 48%);
     --color-scoreboard-font: hsl(0, 0%, 100%);
     --color-background: hsl(243, 100%, 91%);
+    --color-btn: hsl(0, 0%, 100%);
     --color-shadow: hsl(0, 0%, 60%);
     --fontsTitle: Lobster,'Courier New',Courier,monospace;
     --fontsClock: 'Permanent Marker', 'Courier New', Courier, monospace;
@@ -61,6 +62,14 @@
         box-shadow: 10px 10px 10px var(--color-shadow);
         border-radius: 10px;
     }
+    .btn{
+        background-color: var(--color-btn);
+        border: 0px;
+        margin: 10px;
+        padding :10px 20px 10px 20px;
+        border-radius: 10px;
+    }
+
 .choice-container{
     display: flex;
     margin-bottom: 10px;
@@ -86,7 +95,11 @@
         box-shadow: 10px 10px 10px var(--color-shadow);
         border-radius: 10px;
     }
-
+#question{
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
 
 
 
