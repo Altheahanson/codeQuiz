@@ -5,3 +5,6 @@ import * as countdownClock from './timer.js';
 let gameName = document.querySelector(".gameTitle");
 gameName.innerHTML = "CODE QUIZ";
 
+
+
+

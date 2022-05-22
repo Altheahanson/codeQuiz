@@ -1,10 +1,3 @@
-
-// Set variable array
-let questionArray = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question0]
-
-// create and array to select a random question from the question list
-let randomQuestion = questionArray[Math.floor(Math.random() * questionArray.length)];
-
 //Create List of questions
 let question0 = {
     Q: 'How do you break within a string?',
@@ -95,3 +88,4 @@ let question9 = {
     A4: 'Typescript data types',
     R: 'A3'
 }
+

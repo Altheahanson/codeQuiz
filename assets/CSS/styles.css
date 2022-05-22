@@ -30,8 +30,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 80px;
-        margin-bottom: 60px;
+        padding: 60px;
+        margin-bottom: 80px;
         z-index: 100;
         color: var(--color-header-font);
         background-color: var(--color-header);
@@ -57,11 +57,21 @@
         background-color: var(--color-gameboard);
         width: 100%;
         padding: 15px;
-        height: 100px;    
+        height: 350px;    
         box-shadow: 10px 10px 10px var(--color-shadow);
         border-radius: 10px;
     }
+.choice-container{
+    display: flex;
+    margin-bottom: 10px;
+}
+.choice-prefix{
+    padding: 1rem 2.5rem;
+}
     
+.choice-text{
+    padding: 1rem;
+}
     .scoreBoard {
         display: flex;
         flex-direction: column;
@@ -76,3 +86,8 @@
         box-shadow: 10px 10px 10px var(--color-shadow);
         border-radius: 10px;
     }
+
+
+
+
+    
