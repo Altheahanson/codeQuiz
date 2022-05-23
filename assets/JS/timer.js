@@ -1,11 +1,13 @@
+import * as countdownClock from './timer.js';
+
 // Select element by class
 let timeEl = document.querySelector(".countdownTimer");
 
 
 //Set game timer length
-let secondsLeft = 11;
+let secondsLeft = 121;
 
-export function setTime() {
+ function setTime() {
     // Set interval in variable
     let timerInterval = setInterval(function () {
         secondsLeft--;
