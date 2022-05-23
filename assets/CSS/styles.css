@@ -70,7 +70,7 @@
         border-radius: 10px;
     }
 
-.choice-container{
+/* .choice-container{
     display: flex;
     margin-bottom: 10px;
 }
@@ -80,7 +80,7 @@
     
 .choice-text{
     padding: 1rem;
-}
+} */
     .scoreBoard {
         display: flex;
         flex-direction: column;
@@ -102,5 +102,21 @@
 }
 
 
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hide {
+    display: none;
+  }
 
     
