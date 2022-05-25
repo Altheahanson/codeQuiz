@@ -8,23 +8,30 @@ let rankInput = document.querySelector("#rank-text");
 let rankForm = document.querySelector("#rank-form");
 let rankList = document.querySelector("#rank-list");
 let rankCountSpan = document.querySelector("#rank-count");
-var clearScores = document.querySelector("#clear-Scores");
+let clearScores = document.getElementById("clear-Scores");
 let ranks = [];
 let scoreCount = 0;
 
 
-//============Game Title======================
+//Title Of Game
 //Set Game Name
 let gameName = document.querySelector(".gameTitle");
 gameName.innerHTML = "CODE QUIZ";
 
 
-//==================timer function====================
 
+// Clear values from Local Storage  
+clearScores.addEventListener('click', clearPlayerScores)
+
+function clearPlayerScores() {
+    window.localStorage.clear();
+    rankInput.clear();
+}
+
+
+//Game Timer
 // Select element by class
 let timeEl = document.querySelector(".countdownTimer");
-
-
 //Set game timer length
 let secondsLeft = 121;
 
@@ -50,56 +57,73 @@ function gameOver() {
 }
 
 
-//==========Scoreboard===============
-// The following function renders items in a todo list as <li> elements
+
+ 
+
+// Scoreboard 
+// Renders items into <li>
 function renderRanks() {
-  // Clear todoList element and update todoCountSpan
+  // Clear ranks and update rank count
   rankList.innerHTML = "";
   rankCountSpan.textContent = ranks.length;
-
-
-  //=================ScoreBoard===========
-  // Render a new li for each todo
+  // Render a new li for each player entry
   for (let i = 0; i < ranks.length; i++) {
       let rank = ranks[i];
-
       let li = document.createElement("li");
       li.textContent = rank;
       li.setAttribute("data-index", i);
-      rankList.appendChild(li);
-    startButton.classList.remove('hide')
-    scoreRank.classList.add("hide")
+      //rankList.appendChild(li);
+      startButton.classList.remove('hide')
+      scoreRank.classList.add("hide")
   };
+}
+
+function scoreboardInit() {
+  // Get stored ranks from localStorage
+  let storedRanks = JSON.parse(localStorage.getItem("playerRanks")) || [];
+  // If ranks were retrieved from localStorage, update the ranks array to it
+  console.log(storedRanks)
+      rankList.innerHTML = storedRanks
+          .map(score => {
+              return `<li class="high-score">${score.Player}-${score.Score}</li>`;
+          }).join("");
+  if (storedRanks !== null) {
+      rankList = storedRanks;
+
+  }
+  // This is a helper function that will render ranks to the DOM
+  renderRanks();
 
 }
 
+function storeRanks() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("playerRanks", JSON.stringify(ranks));
+}
 
+// Add submit event to form
 rankForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
-var playerInfo = {
-  player: rankInput.value,
-  finalScore: countScore.value,
-};
-
-window.localStorage.setItem("playerInfo", JSON.stringify(playerInfo));
-renderMessage();
-
-});
-
-function renderMessage() {
-  var newRank = JSON.parse(localStorage.getItem("playerInfo"));
-  if (newRank !== null) {
-    document.querySelector(".message").textContent = newRank.player +  newRank.finalScore
+  console.log(scoreCount)
+  let rankText = {
+      Player: rankInput.value.trim(),
+      Score: scoreCount
+  };
+  rankList.push(rankText);
+  localStorage.setItem("playerRanks", JSON.stringify(rankText));
+  // if rankText is empty string exit function
+  if (rankText === "") {
+      return;
   }
-}
 
+  // Add new todoText to todos array, clear the input
+  ranks.push(rankText);
+  rankInput.value = "";
 
-
-
-
-
-
+  // Store updated todos in localStorage, re-render the list
+  storeRanks();
+  renderRanks();
+});
 
 
 
@@ -177,11 +201,12 @@ function processResults(isCorrect) {
   }
    scoreCount = parseInt(countE1.textContent, 10) || 0;
   //increase point value
-   countE1.textContent = scoreCount + 100;
+  scoreCount = scoreCount + 100;
+   countE1.textContent = scoreCount;
    //next question
 }
 
-
+scoreboardInit();
 
 //Create List of questions
 let questions = [
