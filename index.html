@@ -9,7 +9,8 @@
     <link rel="icon" type="image/x-icon" href="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Grape Nuts'|Kanit|Lobster|'Permanent Marker'"> <!--GrapeNuts=Responses, Kanit=Questions, Lobster=Title-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Grape Nuts'|Kanit|Lobster|'Permanent Marker'">
+    <!--GrapeNuts=Responses, Kanit=Questions, Lobster=Title-->
     <link rel="stylesheet" href="./assets/CSS/styles.css">
 </head>
 
@@ -28,51 +29,42 @@
             <h1 align="center" class="gameTitle">Questions</h1>
             <div class="content">
                 <div class="main">
-                
-                  <div id="question-container" class="hide">
-                    <div id="question"></div>
-                    <div id="answer-buttons" class="btn-grid">
-                      <button class="btn">Answer 1</button>
-                      <button class="btn">Answer 2</button>
-                      <button class="btn">Answer 3</button>
-                      <button class="btn">Answer 4</button>
+
+                    <div id="question-container" class="hide">
+                        <div id="question"></div>
+                        <div id="answer-buttons" class="btn-grid">
+                            <button class="btn">Answer 1</button>
+                            <button class="btn">Answer 2</button>
+                            <button class="btn">Answer 3</button>
+                            <button class="btn">Answer 4</button>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="controls">
-                    <!-- Start button needs to disapper when game starts -->
                     <button id="start-btn" class="start-btn btn">Start</button>
-                  </div>
-               
-              </div>
-
-              <!-- Win game form entry -->
-        <!-- needs to be made invisible until win/game end -->  
+                </div>
+            </div>
         </div>
+
         <div class="scoreBoard">
             <div>
                 <h1 align="center" class="gameTitle">Score</h1>
                 <div id="score">Current Score <span id="count"> 0 </span></div>
             </div>
+            
             <div>
                 <form id="rank-form" method="POST" class="hide">
-                    <label for="rank-text" class="gameSubTitle"  >Register Your Score</label>
+                    <label for="rank-text" class="gameSubTitle">Register Your Score</label>
                     <input type="text" placeholder="Player Name" name="rank-text" id="rank-text" />
                 </form>
                 <span id="rank-count" hidden="true">0</span>
                 <ul id="rank-list"></ul>
             </div>
+
             <div><button class="clear-Scores">Clear Scores</button></div>
             <div>
-
             </div>
-
-
-
         </div>
-
-
-
     </main>
 
     <script type="module" src="./assets/JS/playgame.js"></script>

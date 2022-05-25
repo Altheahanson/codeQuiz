@@ -40,16 +40,13 @@ export function setTime() {
             //show player rank entry
             clearInterval(timerInterval);
             gameOver();
-            
         }
-
     }, 1000);
 }
 
 // Function to run at end of game
 function gameOver() {
-  
-    timeEl.textContent = "Time is Up";
+    timeEl.textContent = "Game Over";
 }
 
 
@@ -59,7 +56,7 @@ function renderRanks() {
   // Clear todoList element and update todoCountSpan
   rankList.innerHTML = "";
   rankCountSpan.textContent = ranks.length;
- 
+
 
   //=================ScoreBoard===========
   // Render a new li for each todo
@@ -74,50 +71,43 @@ function renderRanks() {
     scoreRank.classList.add("hide")
   };
 
-
 }
+
 // This function is being called below and will run when the page loads.
 function scoreboardInit() {
   // Get stored todos from localStorage
   let storedRanks = JSON.parse(localStorage.getItem("playerRanks"));
-
   // If todos were retrieved from localStorage, update the todos array to it
   if (storedRanks !== null) {
       ranks = storedRanks;
   }
-
   // This is a helper function that will render todos to the DOM
   renderRanks();
-
 }
 
 function storeRanks() {
   // Stringify and set key in localStorage to todos array
   localStorage.setItem("playerRanks", JSON.stringify(ranks));
 }
-
 // Add submit event to form
 rankForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
   let rankText = rankInput.value.trim();
-
   // Return from function early if submitted todoText is blank
   if (rankText === "") {
       return;
   }
-
   // Add new todoText to todos array, clear the input
   ranks.push(rankText);
   rankInput.value = "";
-
   // Store updated todos in localStorage, re-render the list
   storeRanks();
   renderRanks();
 });
-
 // Calls init to retrieve data and render it to the page on load
 scoreboardInit()
+
+
 
 //================GAME BOARD================
 let shuffledQuestions, currentQuestionIndex
@@ -129,12 +119,13 @@ answerButtonsElement.addEventListener('click', () => {
  })
 
 function startGame() {
-  
-  
+
+
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
+   secondsLeft = 121;
   setTime();
   setNextQuestion()
 }
@@ -155,7 +146,7 @@ function showQuestion(question) {
     }
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
-    
+
   })
 }
 
@@ -171,19 +162,16 @@ function selectAnswer(e) {
   let correct = selectedButton.dataset.correct
   processResults(correct);
   console.log(correct);
- Array.from(answerButtonsElement.children).forEach(button => { 
+ Array.from(answerButtonsElement.children).forEach(button => {
    })
-  if (shuffledQuestions.length > currentQuestionIndex + 1) { 
- 
-    
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+
+
   } else {
-  
+    secondsLeft = 0
     questionContainerElement.classList.add("hide")
-    startButton.innerText = 'Restart'
+    startButton.innerText = 'Restart';
     scoreRank.classList.remove("hide")
- 
-    // 
-    
   }
 }
 
@@ -197,7 +185,9 @@ function processResults(isCorrect) {
    countE1.textContent = scoreCount + 100;
    //next question
 }
- 
+
+
+
 //Create List of questions
 let questions = [
 
