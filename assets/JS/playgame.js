@@ -20,12 +20,13 @@ gameName.innerHTML = "CODE QUIZ";
 
 
 
-// Clear values from Local Storage  
-clearScores.addEventListener('click', clearPlayerScores)
-
 function clearPlayerScores() {
     window.localStorage.clear();
-}
+    document.getElementById("rank-list").innerHTML = "";
+};
+
+// Clear values from Local Storage  
+clearScores.addEventListener('click', clearPlayerScores)
 
 
 //Game Timer
@@ -59,16 +60,7 @@ function gameOver() {
 
 // Scoreboard 
 function renderRanks() {
-  // Clear ranks and update rank count
-//   rankList.innerHTML = "";
-//  rankCountSpan.textContent = ranks.length;
-//    // Render a new li for each player entry
-//   for (let i = 0; i < ranks.length; i++) {
-//        let rank = ranks[i];
-//       let li = document.createElement("li");
-//       li.textContent = rank;
-//       li.setAttribute("data-index", i);
-     //rankList.appendChild(li);
+
       startButton.classList.remove('hide')
       scoreRank.classList.add("hide")
  //  };
@@ -76,21 +68,18 @@ function renderRanks() {
 
 function scoreboardInit() {
   // Get stored ranks from localStorage
-  let storedRanks = JSON.parse(localStorage.getItem("playerRanks")) || [];
-  // If ranks were retrieved from localStorage, update the ranks array to it
-  console.log(storedRanks)
-       rankList.innerHTML = storedRanks
-      .map(score => {
-          return `<li class="high-score">${score.Player}-${score.Score}</li>`;
-        }).join("");
-  if (storedRanks !== null) {
-   
-      rankList = storedRanks;
+  const storedRanks = JSON.parse(localStorage.getItem("playerRanks")) || [];
 
-  }
+  storedRanks.forEach((score) => {
+    const liElement = document.createElement("li");
+    liElement.innerHTML = `${score.Player} - ${score.Score}`;
+    document.getElementById("rank-list").appendChild(liElement);
+  })
+
+
   // This is a helper function that will render ranks to the DOM
   renderRanks();
-  rankList.appendChild;
+  // rankList.appendChild;
 
 }
 
@@ -106,10 +95,8 @@ rankForm.addEventListener("submit", function (event) {
       Player: rankInput.value.trim(),
       Score: scoreCount
   };
-  rankList.push(rankText);
-  window.localStorage.setItem("playerRanks", JSON.stringify(rankText));
-  // if rankText is empty string exit function
-  if (rankText === "") {
+ 
+  if (rankInput.value === "") {
       return;
   }
 
@@ -120,6 +107,7 @@ rankForm.addEventListener("submit", function (event) {
   // Store updated todos in localStorage, re-render the list
   storeRanks();
   renderRanks();
+  scoreboardInit();
 });
 
 
@@ -163,12 +151,10 @@ function showQuestion(question) {
     }
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
-
   })
 }
 
 function resetState() {
-
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }
@@ -179,18 +165,14 @@ function selectAnswer(e) {
   let correct = selectedButton.dataset.correct
   processResults(correct);
   console.log(correct);
- Array.from(answerButtonsElement.children).forEach(button => {
-   })
+
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-
-
   } else {
     secondsLeft = 0;
     currentQuestionIndex = 0;
     questionContainerElement.classList.add("hide");
     startButton.innerText = 'Restart';
     scoreRank.classList.remove("hide");
-  
   }
 }
 
