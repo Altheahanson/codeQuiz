@@ -20,13 +20,6 @@ var playerInfo = {
 
 
 
-
-
-
-
-
-
-
   function storeRanks() {
     // Stringify and set key in localStorage to todos array
     window.localStorage.setItem("playerRanks", JSON.stringify(ranks));

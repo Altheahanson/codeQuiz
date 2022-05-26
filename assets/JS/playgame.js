@@ -25,7 +25,6 @@ clearScores.addEventListener('click', clearPlayerScores)
 
 function clearPlayerScores() {
     window.localStorage.clear();
-    rankInput.clear();
 }
 
 
@@ -58,59 +57,57 @@ function gameOver() {
 
 
 
- 
-
 // Scoreboard 
-// Renders items into <li>
 function renderRanks() {
   // Clear ranks and update rank count
-  rankList.innerHTML = "";
-  rankCountSpan.textContent = ranks.length;
-  // Render a new li for each player entry
-  for (let i = 0; i < ranks.length; i++) {
-      let rank = ranks[i];
-      let li = document.createElement("li");
-      li.textContent = rank;
-      li.setAttribute("data-index", i);
-      //rankList.appendChild(li);
+//   rankList.innerHTML = "";
+//  rankCountSpan.textContent = ranks.length;
+//    // Render a new li for each player entry
+//   for (let i = 0; i < ranks.length; i++) {
+//        let rank = ranks[i];
+//       let li = document.createElement("li");
+//       li.textContent = rank;
+//       li.setAttribute("data-index", i);
+     //rankList.appendChild(li);
       startButton.classList.remove('hide')
       scoreRank.classList.add("hide")
-  };
-}
+ //  };
+ }
 
 function scoreboardInit() {
   // Get stored ranks from localStorage
   let storedRanks = JSON.parse(localStorage.getItem("playerRanks")) || [];
   // If ranks were retrieved from localStorage, update the ranks array to it
   console.log(storedRanks)
-      rankList.innerHTML = storedRanks
-          .map(score => {
-              return `<li class="high-score">${score.Player}-${score.Score}</li>`;
-          }).join("");
+       rankList.innerHTML = storedRanks
+      .map(score => {
+          return `<li class="high-score">${score.Player}-${score.Score}</li>`;
+        }).join("");
   if (storedRanks !== null) {
+   
       rankList = storedRanks;
 
   }
   // This is a helper function that will render ranks to the DOM
   renderRanks();
+  rankList.appendChild;
 
 }
 
 function storeRanks() {
   // Stringify and set key in localStorage to todos array
-  localStorage.setItem("playerRanks", JSON.stringify(ranks));
+  window.localStorage.setItem("playerRanks", JSON.stringify(ranks));
 }
 
 // Add submit event to form
 rankForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log(scoreCount)
   let rankText = {
       Player: rankInput.value.trim(),
       Score: scoreCount
   };
   rankList.push(rankText);
-  localStorage.setItem("playerRanks", JSON.stringify(rankText));
+  window.localStorage.setItem("playerRanks", JSON.stringify(rankText));
   // if rankText is empty string exit function
   if (rankText === "") {
       return;
@@ -128,7 +125,7 @@ rankForm.addEventListener("submit", function (event) {
 
 
 
-//================GAME BOARD================
+//PLAY GAME
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
@@ -145,6 +142,7 @@ function startGame() {
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
    secondsLeft = 121;
+   countE1.textContent = 0;
   setTime();
   setNextQuestion()
 }
@@ -187,10 +185,12 @@ function selectAnswer(e) {
 
 
   } else {
-    secondsLeft = 0
-    questionContainerElement.classList.add("hide")
+    secondsLeft = 0;
+    currentQuestionIndex = 0;
+    questionContainerElement.classList.add("hide");
     startButton.innerText = 'Restart';
-    scoreRank.classList.remove("hide")
+    scoreRank.classList.remove("hide");
+  
   }
 }
 
